@@ -137,6 +137,7 @@ class BodegaController{
             
             //Creamos una bodega
             $bodega=new Bodega($this->conexion);
+            $bodega->setId($_POST["id"]);
             $bodega->setNombre($_POST["nombre"]);
             $bodega->setDireccion($_POST["direccion"]);
             $bodega->setEmail($_POST["email"]);
@@ -145,9 +146,9 @@ class BodegaController{
             $bodega->setFecha($_POST["fecha"]);
             $bodega->setRestaurante($_POST["restaurante"]);
             $bodega->setHotel($_POST["hotel"]);
-            $save=$bodega->guardar();
+            $save=$bodega->actualizar();
         }
-        $this->run("index");
+        header("Location: index.php?controller=bodega&action=detalle&id=" . $_POST["id"]);
     }
     
     

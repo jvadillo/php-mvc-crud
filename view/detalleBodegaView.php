@@ -6,9 +6,9 @@
                     <h3>Datos bodega</h3>
                 </div>
                 <div>
-                    <a href="#" id="editarBodega" class="btn btn-outline-warning">Editar</a>
-                    <a href="index.php" class="btn btn-outline-primary">Volver</a>
-                    <a href="index.php?controller=bodega&action=borrar&id=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-danger">Eliminar</a>
+                    <a href="#" id="editarBtn" class="btn btn-outline-warning"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;Editar</a>
+                    <a href="index.php" class="btn btn-outline-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</a>
+                    <a href="index.php?controller=bodega&action=borrar&id=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Eliminar</a>
                 </div>
             </div>
             <hr/>
@@ -48,13 +48,13 @@
                 <legend>¿Dispone de restaurante?</legend>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante" value="1">
+                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante" value="1" <?php echo $datos['bodega']->restaurante == 1 ? 'checked' : '' ?>>
                     Sí
                   </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante2" value="0" checked>
+                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante2" value="0" <?php echo $datos['bodega']->restaurante == 0 ? 'checked' : '' ?>>
                     No
                   </label>
                 </div>
@@ -64,13 +64,13 @@
                 <legend>¿Dispone de hotel?</legend>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel" value="1">
+                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel" value="1" <?php echo $datos['bodega']->hotel == 1 ? 'checked' : '' ?>>
                     Sí
                   </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel2" value="0" checked>
+                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel2" value="0" <?php echo $datos['bodega']->hotel == 0 ? 'checked' : '' ?>>
                     No
                   </label>
                 </div>
@@ -80,13 +80,13 @@
               <button type="submit" class="btn btn-primary hide">Guardar</button>
             </form>
         </div> 
-        <div class="col-5"> 
+        <div class="col-6"> 
           <div class="d-flex justify-content-between">
               <div>
                   <h3>Vinos disponibles</h3>
               </div>
               <div>
-                  <a href="index.php?controller=vino&action=nuevo&bodega=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-primary"><b>+</b> Añadir vino</a>
+                  <a href="index.php?controller=vino&action=nuevo&bodega=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Añadir vino</a>
               </div>
           </div>
           <hr/>
@@ -108,8 +108,8 @@
                   <?php echo $vino["tipo"]; ?>
                 </td>
                 <td>
-                  <a class="btn btn-outline-primary" href="index.php?controller=vino&action=detalle&id=<?php echo $vino['id']; ?>">Entrar</a>
-                  <a class="btn btn-outline-danger" href="index.php?controller=vino&action=borrar&id=<?php echo $vino['id'] ?>&bodega=<?php echo $datos["bodega"]->id ?>">Borrar</a> </td>
+                  <a class="btn btn-outline-primary" href="index.php?controller=vino&action=detalle&id=<?php echo $vino['id']; ?>&bodega=<?php echo $datos["bodega"]->id ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Ver</a>
+                  <a class="btn btn-outline-danger" href="index.php?controller=vino&action=borrar&id=<?php echo $vino['id'] ?>&bodega=<?php echo $datos["bodega"]->id ?>"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</a> </td>
               </tr>
               <?php } ?>
             </tbody>

@@ -1,86 +1,62 @@
 <?php include_once 'header.php';?>
-    <div class="row justify-content-between">
-        <div class="col-lg-6">  
+
+        <div class="thin-panel">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h3>Datos vino</h3>
+                    <h3>Detalle vino</h3>
                 </div>
                 <div>
-                    <a href="#" id="editarBodega" class="btn btn-outline-warning">Editar</a>
-                    <a href="index.php" class="btn btn-outline-primary">Volver</a>
-                    <a href="index.php?controller=bodega&action=borrar&id=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-danger">Eliminar</a>
+                    <?php
+                      $volverURL = "index.php?controller=bodega&action=detalle&id=" . $data['bodega'];
+                      $borrarURL = "index.php?controller=bodega&action=borrar&id=" . $datos['vino']->id . "&bodega=" . $data['bodega'];
+                    ?>
+                    <a href="#" id="editarBtn" class="btn btn-outline-warning"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;&nbsp;Editar</a>
+                    <a href="<?php echo $volverURL ?>" class="btn btn-outline-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Volver</a>
+                    <a class="btn btn-outline-danger" href="<?php echo $borrarURL ?>"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;&nbsp;Borrar</a>
                 </div>
             </div>
             <hr/>
-            <form action="index.php?controller=bodega&action=actualizar" method="post">
-              <input type="hidden" name="id" value="<?php echo $datos["bodega"]->id ?>"/>
+            <form action="index.php?controller=vino&action=actualizar" method="post">
+              <input type="hidden" name="id" value="<?php echo $datos["vino"]->id ?>"/>
+              <input type="hidden" name="bodega" value="<?php echo $datos["bodega"] ?>"/>
+              
               <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input disabled type="text" name="nombre" class="form-control" id="nombre" value="<?php echo $datos["bodega"]->nombre ?>">
+                <input disabled type="text" name="nombre" class="form-control" id="nombre" value="<?php echo $data['vino']->nombre ?>">
               </div>
 
               <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input disabled type="text" name="direccion" class="form-control" id="direccion" value="<?php echo $datos['bodega']->direccion ?>">
+                <label for="descripcion">Descripcion</label>
+                <textarea disabled class="form-control" name="descripcion" id="descripcion" rows="3"><?php echo $datos['vino']->descripcion ?></textarea>
               </div>
 
               <div class="form-group">
-                <label for="email">Email</label>
-                <input disabled type="email" name="email" class="form-control" id="email" value="<?php echo $datos['bodega']->email ?>">
+                <label for="ano">Año</label>
+                <input  disabled type="text" name="ano" class="form-control" id="ano" value="<?php echo $data['vino']->ano ?>">
+              </div>
+
+              <div class="form-group">
+                <label for="alcohol">Alcohol</label>
+                <input disabled type="text" name="alcohol" class="form-control" id="alcohol" value="<?php echo $data['vino']->alcohol ?>">
+              </div>
+
+              <div class="form-group">
+                <label for="tipo">Tipo de vino</label>
+                <select disabled class="form-control" id="tipo" name="tipo">
+                  <option value="tinto" <?php echo $data['vino']->tipo == 'tinto'? 'selected' : '' ?>>Tinto</option>
+                  <option value="blanco" <?php echo $data['vino']->tipo == 'blanco'? 'selected' : '' ?>>Blanco</option>
+                  <option value="rosado" <?php echo $data['vino']->tipo == 'rosado'? 'selected' : '' ?>>Rosado</option>
+                </select>
               </div>
               
-              <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input disabled type="text" name="telefono" class="form-control" id="telefono" value="<?php echo $datos['bodega']->telefono ?>">
-              </div>
 
-              <div class="form-group">
-                <label for="contacto">Persona de contacto</label>
-                <input disabled type="text" name="contacto" class="form-control" id="contacto" value="<?php echo $datos['bodega']->contacto ?>">
-              </div>
-
-              <div class="form-group">
-                <label for="fecha">Año de fundación</label>
-                <input disabled type="text" name="fecha" class="form-control" id="fecha" value="<?php echo $datos['bodega']->fecha ?>">
-              </div>
-              
-              <fieldset class="form-group">
-                <legend>¿Dispone de restaurante?</legend>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante" value="1">
-                    Sí
-                  </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="restaurante" id="restaurante2" value="0" checked>
-                    No
-                  </label>
-                </div>
-              </fieldset>
-
-              <fieldset class="form-group">
-                <legend>¿Dispone de hotel?</legend>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel" value="1">
-                    Sí
-                  </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                    <input disabled type="radio" class="form-check-input" name="hotel" id="hotel2" value="0" checked>
-                    No
-                  </label>
-                </div>
-              </fieldset>
-              
-
-              <button type="submit" class="btn btn-primary hide">Guardar</button>
+              <button disabled type="submit" class="btn btn-primary">Actualizar Vino</button>
             </form>
-        </div>  
-    </div> 
+        </div>    
+
+
+
 
 
 <?php include_once 'footer.php';?>
+

@@ -86,7 +86,7 @@ class Vino extends GenericModel{
         return $result; //true if OK.
     }
 
-    public function update(){
+    public function actualizar(){
 
         $consulta = $this->conexion->prepare("
             UPDATE " . $this->table . " 
@@ -107,7 +107,8 @@ class Vino extends GenericModel{
             "descripcion" => $this->descripcion,
             "tipo" => $this->tipo,
             "ano" => $this->ano,
-            "alcohol" => $this->alcohol
+            "alcohol" => $this->alcohol,
+            "id" => $this->id
         ));
         $this->conexion = null;
 

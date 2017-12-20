@@ -102,32 +102,33 @@ class Bodega extends GenericModel{
         return $result; //true if OK.
     }
 
-    public function update(){
+    public function actualizar(){
 
         $consulta = $this->conexion->prepare("
-            UPDATE " . $this->table . " 
+            UPDATE " . $this->table . "  
             SET 
-                nombre = :nombre,
-                direccion = :direccion, 
-                email = :email,
-                telefono = :telefono,
-                contacto = :contacto,
-                fecha = :telefono,
-                restaurante = :restaurante,
-                hotel = :hotel
+                nombre = :nombre,  
+                direccion = :direccion,  
+                email = :email, 
+                telefono = :telefono, 
+                contacto = :contacto, 
+                fecha = :telefono, 
+                restaurante = :restaurante, 
+                hotel = :hotel 
 
             WHERE id = :id 
         ");
 
         $resultado = $consulta->execute(array(
             "nombre" => $this->nombre,
-            "direccion" => $this->apellidos,
+            "direccion" => $this->direccion,
             "email" => $this->email,
             "telefono" => $this->telefono,
             "contacto" => $this->contacto,
             "fecha" => $this->fecha,
             "restaurante" => $this->restaurante,
-            "hotel" => $this->hotel
+            "hotel" => $this->hotel, 
+            "id" => $this->id
         ));
         $this->conexion = null;
 

@@ -53,10 +53,11 @@ class VinoController{
 
 
         $vino = new Vino($this->conexion);
-        $vinos = $vino ->getById($_GET["id"]);
-
+        $result = $vino ->getById($_GET["id"]);
+        
         $this->view("detalleVino",array(
-            "vino" => $vino,
+            "vino" => $result,
+            "bodega" => $_GET["bodega"],
             "titulo" => "Detalle Vino"
         ));
     }
@@ -108,19 +109,18 @@ class VinoController{
     public function actualizar(){
         if(isset($_POST["id"])){
             
-            //Creamos una bodega
-            $bodega=new Bodega($this->conexion);
-            $bodega->setNombre($_POST["nombre"]);
-            $bodega->setDireccion($_POST["direccion"]);
-            $bodega->setEmail($_POST["email"]);
-            $bodega->setTelefono($_POST["telefono"]);
-            $bodega->setContacto($_POST["contacto"]);
-            $bodega->setFecha($_POST["fecha"]);
-            $bodega->setRestaurante($_POST["restaurante"]);
-            $bodega->setHotel($_POST["hotel"]);
-            $save=$bodega->guardar();
+            //Creamos un vino
+            $vino=new Vino($this->conexion);
+            $vino->setId($_POST["id"]);
+            $vino->setNombre($_POST["nombre"]);
+            $vino->setDescripcion($_POST["descripcion"]);
+            $vino->setBodega($_POST["bodega"]);
+            $vino->setTipo($_POST["tipo"]);
+            $vino->setAno($_POST["ano"]);
+            $vino->setAlcohol($_POST["alcohol"]);
+            $save=$vino->actualizar();
         }
-        $this->run("index");
+        header("Location:index.php?controller=bodega&action=detalle&id=".$_POST["bodega"]);
     }
     
     

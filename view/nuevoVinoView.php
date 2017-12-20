@@ -3,7 +3,7 @@
         <div class="thin-panel">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h3>Nueva bodega</h3>
+                    <h3>Nueva vino</h3>
                 </div>
                 <div>
                     <a href="index.php" class="btn btn-info">Volver</a>
