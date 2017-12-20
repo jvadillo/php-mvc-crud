@@ -3,7 +3,7 @@
         <div class="col-lg-6">  
             <div class="d-flex justify-content-between">
                 <div>
-                    <h3>Datos bodega</h3>
+                    <h3>Datos vino</h3>
                 </div>
                 <div>
                     <a href="#" id="editarBodega" class="btn btn-outline-warning">Editar</a>
@@ -79,41 +79,6 @@
 
               <button type="submit" class="btn btn-primary hide">Guardar</button>
             </form>
-        </div> 
-        <div class="col-5"> 
-          <div class="d-flex justify-content-between">
-              <div>
-                  <h3>Vinos disponibles</h3>
-              </div>
-              <div>
-                  <a href="index.php?controller=vino&action=nuevo&bodega=<?php echo $datos['bodega']->id ?>" class="btn btn-outline-primary"><b>+</b> Añadir vino</a>
-              </div>
-          </div>
-          <hr/>
-          <table class="table table-bordered grocery-crud-table table-hover">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach($datos["vinos"] as $vino) { ?>
-              <tr>
-                <td>
-                  <?php echo $vino["nombre"]; ?>
-                </td>
-                <td>
-                  <?php echo $vino["tipo"]; ?>
-                </td>
-                <td>
-                  <a class="btn btn-outline-primary" href="index.php?controller=vino&action=detalle&id=<?php echo $vino['id']; ?>">Entrar</a>
-                  <a class="btn btn-outline-danger" href="index.php?controller=vino&action=borrar&id=<?php echo $vino['id'] ?>&bodega=<?php echo $datos["bodega"]->id ?>">Borrar</a> </td>
-              </tr>
-              <?php } ?>
-            </tbody>
-          </table>  
         </div>  
     </div> 
 

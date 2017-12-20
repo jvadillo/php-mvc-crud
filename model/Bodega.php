@@ -15,7 +15,7 @@ class Bodega extends GenericModel{
 
     public function __construct($conexion) {
 		parent::__construct($conexion);
-        $this->table = "bodegas";
+        $this->table = TABLE_BODEGAS;
     }
 
     

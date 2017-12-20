@@ -43,9 +43,8 @@ class GenericModel {
     
     public function getByColumn($column,$value){
         $consulta = $this->conexion->prepare("SELECT * 
-                                                FROM " . $this->table . " WHERE :column = :value");
+                                                FROM " . $this->table . " WHERE " . $column . " = :value");
         $consulta->execute(array(
-            "column" => $column,
             "value" => $value
         ));
         $resultados = $consulta->fetchAll();

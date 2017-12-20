@@ -21,7 +21,7 @@ function cargarControlador($controller){
     // Creamos el nombre del archivo del controlador: e.j. controller/usuarioController.php
     $strFileController='controller/'.$controlador.'.php';
     //Si no existe ningun controlador con ese nombre, cargamos el definido por defecto.
-    if(!is_file($strFileController)){
+    if(!is_file($strFileController)) {
         $strFileController='controller/'.ucwords(CONTROLADOR_DEFECTO).'Controller.php';   
     }
     //Cargamos el archivo donde está definido el controlador:
@@ -31,7 +31,7 @@ function cargarControlador($controller){
     return $controllerObj;
 }
 
-function lanzarAccion($controllerObj){
+function lanzarAccion($controllerObj) {
     if(isset($_GET["action"])){
         $controllerObj->run($_GET["action"]);
     }else{
